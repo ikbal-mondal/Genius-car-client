@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Form, Link, } from 'react-router-dom';
+import { setAuthToken } from '../../Api/Auth';
 import img from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 const SignUp = () => {
@@ -12,11 +13,12 @@ const SignUp = () => {
         const name = from.name.value;
         const  email = from.email.value;
          const password = from.password.value;
-         createUser(email,password)
+         createUser(email,password) 
          .then(result => {
             const user = result.user;
             console.log(user);
             from.reset()
+            setAuthToken(user)
       
          })
          .catch(error => console.log(error))

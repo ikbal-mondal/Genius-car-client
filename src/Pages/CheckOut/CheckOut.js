@@ -28,12 +28,12 @@ const handleplaceOrder = (event) => {
         message
      }
 
-
+  
 	 if(phone.length > 10){
 		alert('phone number should be 10 characters')
 	 }
-     
-	 fetch('http://localhost:5000/orders',{
+     console.log(order);
+	 fetch(`http://localhost:5000/orders?email=${user?.email}`,{
 		method:'POST',
 		headers: {
 			'content-type': 'application/json',
